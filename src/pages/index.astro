@@ -1,0 +1,76 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Hero from '../components/Hero.astro';
+import StatsBar from '../components/StatsBar.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import VenueMarquee from '../components/VenueMarquee.astro';
+import WhyUs from '../components/WhyUs.astro';
+import GuaranteeBadge from '../components/GuaranteeBadge.astro';
+import AgentCTA from '../components/AgentCTA.astro';
+import { useTranslations } from '../i18n/utils';
+
+const t = useTranslations('en');
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Luxury London Weddings',
+  description: "Church and heritage venue brokerage for overseas wedding agents and couples in London and the UK.",
+  url: 'https://luxurylondonweddings.co.uk',
+  email: 'hello@luxurylondonweddings.co.uk',
+  areaServed: ['London', 'England', 'Scotland', 'United Kingdom'],
+  serviceType: 'Wedding Venue Brokerage',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'London',
+    addressCountry: 'GB',
+  },
+  sameAs: [],
+};
+
+const services = [
+  { icon: '⛪', title: t('services.church.title'), description: t('services.church.desc') },
+  { icon: '✝', title: t('services.blessing.title'), description: t('services.blessing.desc') },
+  { icon: '🏛', title: t('services.estate.title'), description: t('services.estate.desc') },
+  { icon: '🗺', title: t('services.multiVenue.title'), description: t('services.multiVenue.desc') },
+  { icon: '🎵', title: t('services.choir.title'), description: t('services.choir.desc') },
+  { icon: '🤝', title: t('services.agent.title'), description: t('services.agent.desc') },
+];
+---
+
+<PageLayout
+  title="Luxury London Weddings — Church & Heritage Venue Brokerage"
+  description="We book London's most photogenic churches, chapels, and country estates for overseas wedding agents and couples. Pre-wedding photography, blessing ceremonies, and filmed celebrations."
+  jsonLd={jsonLd}
+>
+  <Hero />
+  <StatsBar />
+
+  <!-- Services -->
+  <section class="py-24 lg:py-32 bg-ivory">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <p class="text-gold tracking-[0.2em] uppercase text-sm font-light mb-4">
+          {t('services.label')}
+        </p>
+        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-light text-dark">
+          {t('services.title')}
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map(s => (
+          <ServiceCard title={s.title} description={s.description} icon={s.icon} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <VenueMarquee />
+  <WhyUs />
+
+  <div class="py-12 bg-ivory">
+    <GuaranteeBadge />
+  </div>
+
+  <AgentCTA />
+</PageLayout>

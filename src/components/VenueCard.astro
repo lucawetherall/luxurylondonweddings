@@ -1,0 +1,55 @@
+---
+interface Props {
+  name: string;
+  location: string;
+  type: string;
+  priceRange: string;
+  exclusive?: boolean;
+  description: string;
+  slug: string;
+}
+
+const { name, location, type, priceRange, exclusive, description, slug } = Astro.props;
+
+const priceLabels: Record<string, string> = {
+  standard: '£',
+  premium: '££',
+  luxury: '£££',
+};
+
+const typeLabels: Record<string, string> = {
+  church: 'Church',
+  chapel: 'Chapel',
+  cathedral: 'Cathedral',
+  estate: 'Estate',
+  castle: 'Castle',
+};
+---
+
+<article class="group bg-mist border border-champagne/30 hover:border-gold/30 transition-all duration-300 overflow-hidden">
+  <!-- Image placeholder: gradient background with venue name -->
+  <div class="relative h-56 bg-gradient-to-br from-dark via-slate to-warm-black flex items-end p-6 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-t from-warm-black/80 to-transparent"></div>
+    <div class="relative z-10">
+      {exclusive && (
+        <span class="inline-block text-gold text-[10px] tracking-[0.2em] uppercase font-medium border border-gold/30 px-2 py-1 mb-2">
+          Exclusive
+        </span>
+      )}
+      <h3 class="font-serif text-2xl text-ivory font-light leading-tight">{name}</h3>
+    </div>
+  </div>
+
+  <div class="p-6">
+    <div class="flex items-center gap-3 mb-4 text-sm">
+      <span class="text-gold font-light">{location}</span>
+      <span class="text-champagne/30">·</span>
+      <span class="text-slate font-light capitalize">{typeLabels[type] ?? type}</span>
+      <span class="text-champagne/30">·</span>
+      <span class="text-gold font-light">{priceLabels[priceRange] ?? priceRange}</span>
+    </div>
+    <p class="text-slate text-sm font-light leading-relaxed line-clamp-3">
+      {description}
+    </p>
+  </div>
+</article>

@@ -1,0 +1,56 @@
+---
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const tp = useTranslatedPath(lang);
+---
+
+<section class="bg-warm-black py-24 lg:py-32">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+    <p class="text-gold tracking-[0.2em] uppercase text-sm font-light mb-4">
+      {t('agentCta.label')}
+    </p>
+    <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-light text-ivory mb-8">
+      {t('agentCta.title')}
+    </h2>
+    <p class="text-champagne/70 text-lg font-light leading-relaxed max-w-2xl mx-auto mb-12">
+      {t('agentCta.body')}
+    </p>
+
+    <!-- Locale-conditional contact methods -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      {lang === 'zh' ? (
+        <>
+          <div class="bg-dark/50 border border-gold/20 p-6 text-center">
+            <p class="text-gold text-sm tracking-wider uppercase mb-3">WeChat</p>
+            <div class="w-32 h-32 bg-dark border border-gold/10 flex items-center justify-center mx-auto">
+              <span class="text-champagne/40 text-xs">WeChat QR</span>
+            </div>
+          </div>
+          <a
+            href={tp('/contact/')}
+            class="inline-block px-8 py-4 border border-gold/40 text-gold font-light text-sm tracking-wider uppercase hover:border-gold hover:bg-gold/5 transition-all duration-300"
+          >
+            发送邮件咨询
+          </a>
+        </>
+      ) : (
+        <>
+          <a
+            href={tp('/contact/')}
+            class="inline-block px-8 py-4 bg-gold text-warm-black font-medium text-sm tracking-wider uppercase hover:bg-gold-light transition-colors duration-300"
+          >
+            {t('contact.email')}
+          </a>
+          <a
+            href={tp('/for-agents/')}
+            class="inline-block px-8 py-4 border border-gold/40 text-gold font-light text-sm tracking-wider uppercase hover:border-gold hover:bg-gold/5 transition-all duration-300"
+          >
+            {t('nav.forAgents')}
+          </a>
+        </>
+      )}
+    </div>
+  </div>
+</section>

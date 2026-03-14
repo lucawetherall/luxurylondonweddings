@@ -1,0 +1,40 @@
+---
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+
+type Platform = {
+  name: string;
+  icon: string;
+};
+
+const platformsByLocale: Record<string, Platform[]> = {
+  en: [
+    { name: 'Instagram', icon: 'IG' },
+    { name: 'Pinterest', icon: 'Pi' },
+    { name: 'LinkedIn', icon: 'Li' },
+  ],
+  zh: [
+    { name: '小红书', icon: 'XHS' },
+    { name: '抖音', icon: 'DY' },
+    { name: '微信', icon: 'WX' },
+    { name: 'Instagram', icon: 'IG' },
+  ],
+  ja: [
+    { name: 'Instagram', icon: 'IG' },
+    { name: 'LINE', icon: 'LN' },
+    { name: 'X/Twitter', icon: 'X' },
+  ],
+};
+
+const platforms = platformsByLocale[lang] ?? platformsByLocale.en;
+---
+
+<div class="flex items-center justify-center gap-4 flex-wrap">
+  {platforms.map((p) => (
+    <div class="flex items-center gap-2 px-4 py-2 border border-gold/15 text-champagne/60 text-sm font-light tracking-wide">
+      <span class="text-gold text-xs font-medium">{p.icon}</span>
+      <span>{p.name}</span>
+    </div>
+  ))}
+</div>

@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  price?: string;
+}
+
+const { title, description, icon, price } = Astro.props;
+---
+
+<div class="service-card bg-mist p-8 lg:p-10 group transition-all duration-300 hover:bg-champagne/30">
+  <div class="text-3xl mb-5 text-gold/80">{icon}</div>
+  <h3 class="font-serif text-xl lg:text-2xl font-normal text-dark mb-4">
+    {title}
+  </h3>
+  <p class="text-slate text-base font-light leading-relaxed">
+    {description}
+  </p>
+  {price && (
+    <p class="mt-6 text-gold font-medium text-sm tracking-wide uppercase">
+      {price}
+    </p>
+  )}
+</div>

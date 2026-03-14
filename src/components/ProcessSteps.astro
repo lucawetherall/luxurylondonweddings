@@ -1,0 +1,50 @@
+---
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+
+type Step = { num: string; title: string; desc: string };
+
+const steps: Record<string, Step[]> = {
+  en: [
+    { num: '01', title: 'Brief Us', desc: 'Share your dates, style preferences, group size, and any must-have requirements. We respond within 24 hours.' },
+    { num: '02', title: 'Receive Your Shortlist', desc: 'We send a curated selection of 3–5 confirmed venues with photos, pricing, access terms, and logistics notes.' },
+    { num: '03', title: 'Confirm & Book', desc: 'Choose your venues. We handle all permissions, payments, and clergy coordination. You receive a confirmed booking within 72 hours.' },
+    { num: '04', title: 'We Handle the Day', desc: 'On-site coordination, transport logistics, wet-weather backup, and a direct line to us throughout. Your team focuses on the shoot.' },
+  ],
+  zh: [
+    { num: '01', title: '告诉我们需求', desc: '分享您的日期、风格偏好、人数以及必须满足的要求。我们24小时内回复。' },
+    { num: '02', title: '收到候选清单', desc: '我们发送3-5个已确认场地的精选清单，附带照片、报价、入场条款和物流说明。' },
+    { num: '03', title: '确认预订', desc: '选择场地后，我们处理所有许可、付款和神职人员协调。72小时内收到确认预订。' },
+    { num: '04', title: '现场执行', desc: '现场协调、交通安排、雨天备案，以及全程直通联络。您的团队专注拍摄即可。' },
+  ],
+  ja: [
+    { num: '01', title: 'ご要望をお聞かせください', desc: '日程、スタイル、人数、ご希望の条件をお知らせください。24時間以内にご返信します。' },
+    { num: '02', title: '候補リストのご提案', desc: '写真・料金・利用条件・物流メモ付きの3〜5会場の厳選リストをお送りします。' },
+    { num: '03', title: 'ご予約確定', desc: '会場をお選びいただいた後、許可、支払い、聖職者との調整をすべて代行します。72時間以内にご予約を確定します。' },
+    { num: '04', title: '当日のサポート', desc: '現場コーディネーション、送迎手配、雨天時の代替案、そして終日の直通連絡窓口をご提供します。' },
+  ],
+};
+
+const currentSteps = steps[lang] ?? steps.en;
+---
+
+<section class="py-24 lg:py-32 bg-mist">
+  <div class="max-w-5xl mx-auto px-6 lg:px-8">
+    <div class="space-y-12">
+      {currentSteps.map((step) => (
+        <div class="grid lg:grid-cols-12 gap-6 items-start">
+          <div class="lg:col-span-1">
+            <span class="text-gold font-serif text-3xl font-light">{step.num}</span>
+          </div>
+          <div class="lg:col-span-3">
+            <h3 class="font-serif text-2xl font-normal text-dark">{step.title}</h3>
+          </div>
+          <div class="lg:col-span-8">
+            <p class="text-slate text-base font-light leading-relaxed">{step.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
