@@ -1,0 +1,45 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const t = useTranslations('ja');
+const bodyParagraphs = t('forAgents.body').split('\n\n');
+---
+
+<PageLayout
+  title="エージェント様へ — Luxury London Weddings"
+  description="信頼できる英国会場パートナーをお探しの方へ。優先予約枠、ボリュームディスカウント、専用連絡窓口。"
+  lang="ja"
+>
+  <section class="pt-32 pb-24 bg-warm-black">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="text-gold tracking-[0.2em] uppercase text-sm font-light mb-6">
+        {t('agentCta.label')}
+      </p>
+      <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-ivory">
+        {t('forAgents.headline')}
+      </h1>
+    </div>
+  </section>
+
+  <section class="py-24 bg-ivory">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="space-y-6">
+        {bodyParagraphs.map(p => (
+          <p class="text-slate text-lg font-light leading-relaxed">{p}</p>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-mist">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="font-serif text-3xl font-light text-dark mb-8">お問い合わせ</h2>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+        <a href="mailto:hello@luxurylondonweddings.co.uk" class="inline-block px-8 py-4 bg-gold text-warm-black font-medium text-sm tracking-wider uppercase hover:bg-gold-light transition-colors">
+          メールでお問い合わせ
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>

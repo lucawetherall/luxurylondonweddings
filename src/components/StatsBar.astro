@@ -1,0 +1,27 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const stats = [
+  t('stats.venues'),
+  t('stats.types'),
+  t('stats.locations'),
+  t('stats.confirmation'),
+];
+---
+
+<div class="bg-dark border-y border-gold/10">
+  <div class="max-w-7xl mx-auto px-6 py-6">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
+      {stats.map((stat) => (
+        <div class="text-center">
+          <p class="text-gold text-sm lg:text-base font-light tracking-wide">
+            {stat}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

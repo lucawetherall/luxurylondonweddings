@@ -1,0 +1,18 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const venues = t('venueMarquee');
+---
+
+<div class="bg-dark py-5 overflow-hidden border-y border-gold/10">
+  <div class="flex whitespace-nowrap">
+    <div class="marquee-track flex items-center">
+      <span class="text-gold/60 text-sm tracking-[0.15em] uppercase font-light px-4">{venues}</span>
+      <span class="text-gold/30 px-4">·</span>
+      <span class="text-gold/60 text-sm tracking-[0.15em] uppercase font-light px-4">{venues}</span>
+      <span class="text-gold/30 px-4">·</span>
+    </div>
+  </div>
+</div>

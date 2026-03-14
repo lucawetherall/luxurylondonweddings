@@ -1,0 +1,56 @@
+---
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
+import PlatformIcons from './PlatformIcons.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const tp = useTranslatedPath(lang);
+
+const navItems = [
+  { label: t('nav.venues'), href: tp('/venues/') },
+  { label: t('nav.services'), href: tp('/services/') },
+  { label: t('nav.forAgents'), href: tp('/for-agents/') },
+  { label: t('nav.about'), href: tp('/about/') },
+  { label: t('nav.contact'), href: tp('/contact/') },
+];
+---
+
+<footer class="bg-warm-black border-t border-gold/10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+    <div class="grid lg:grid-cols-3 gap-12 lg:gap-8">
+      <!-- Brand -->
+      <div>
+        <h3 class="font-serif text-2xl text-ivory font-light mb-4">Luxury London Weddings</h3>
+        <p class="text-champagne/50 text-sm font-light leading-relaxed max-w-xs">
+          {lang === 'en' && 'Church and heritage venue brokerage for overseas wedding agents and couples.'}
+          {lang === 'zh' && '为海外婚礼策划师和新人提供英国教堂与古典场地预订服务。'}
+          {lang === 'ja' && '海外のウェディングエージェントとカップルのための英国教会・歴史的建造物の会場手配。'}
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <nav class="flex flex-wrap gap-x-8 gap-y-3">
+          {navItems.map(item => (
+            <a href={item.href} class="text-champagne/50 hover:text-gold text-sm font-light tracking-wider uppercase transition-colors">
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <!-- Platforms -->
+      <div class="lg:text-right">
+        <PlatformIcons />
+      </div>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-gold/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-champagne/30 text-xs font-light">{t('footer.rights')}</p>
+      <div class="flex gap-6">
+        <span class="text-champagne/30 text-xs font-light">{t('footer.privacy')}</span>
+        <span class="text-champagne/30 text-xs font-light">{t('footer.terms')}</span>
+      </div>
+    </div>
+  </div>
+</footer>

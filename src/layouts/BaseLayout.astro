@@ -1,0 +1,114 @@
+---
+import '../styles/global.css';
+import { getLangFromUrl } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: Lang;
+  jsonLd?: Record<string, unknown>;
+}
+
+const { title, description, lang: langProp, jsonLd } = Astro.props;
+const lang = langProp ?? getLangFromUrl(Astro.url);
+
+const ogLocaleMap: Record<Lang, string> = {
+  en: 'en_GB',
+  zh: 'zh_CN',
+  ja: 'ja_JP',
+};
+
+// Locale-conditional Google Fonts
+const fontUrls: Record<Lang, string> = {
+  en: 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap',
+  zh: 'https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600&family=Noto+Sans+SC:wght@300;400;500&display=swap',
+  ja: 'https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;500&display=swap',
+};
+
+const currentPath = Astro.url.pathname;
+const site = Astro.site?.origin ?? 'https://luxurylondonweddings.co.uk';
+
+// Build canonical and hreflang URLs
+function getLocalePath(targetLang: Lang): string {
+  let basePath = currentPath;
+  // Remove current lang prefix
+  if (lang !== 'en') {
+    basePath = currentPath.replace(new RegExp(`^/${lang}`), '') || '/';
+  }
+  if (targetLang === 'en') return basePath;
+  return `/${targetLang}${basePath === '/' ? '' : basePath}`;
+}
+
+const canonicalUrl = `${site}${currentPath}`;
+---
+
+<!DOCTYPE html>
+<html lang={lang} class="antialiased">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="generator" content={Astro.generator} />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+
+  <!-- Canonical -->
+  <link rel="canonical" href={canonicalUrl} />
+
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="en" href={`${site}${getLocalePath('en')}`} />
+  <link rel="alternate" hreflang="zh" href={`${site}${getLocalePath('zh')}`} />
+  <link rel="alternate" hreflang="ja" href={`${site}${getLocalePath('ja')}`} />
+  <link rel="alternate" hreflang="x-default" href={`${site}${getLocalePath('en')}`} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:locale" content={ogLocaleMap[lang]} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:site_name" content="Luxury London Weddings" />
+
+  <!-- Locale-conditional fonts — only load fonts for current locale -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href={fontUrls[lang]} rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  {jsonLd && (
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  )}
+</head>
+<body class="bg-ivory text-dark min-h-screen flex flex-col">
+  <slot />
+
+  <!-- Nav scroll effect -->
+  <script>
+    const nav = document.querySelector('[data-nav]');
+    if (nav) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+          nav.classList.add('nav-scrolled');
+        } else {
+          nav.classList.remove('nav-scrolled');
+        }
+      }, { passive: true });
+    }
+  </script>
+
+  <!-- Scroll-triggered fade-in -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

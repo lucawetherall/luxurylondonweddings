@@ -1,0 +1,44 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import VenueCard from '../../components/VenueCard.astro';
+import { useTranslations } from '../../i18n/utils';
+import { getCollection } from 'astro:content';
+
+const t = useTranslations('zh');
+const allVenues = await getCollection('venues', ({ data }) => data.locale === 'zh');
+---
+
+<PageLayout
+  title="精选场地 — Luxury London Weddings"
+  description="英格兰和苏格兰的教堂、礼拜堂、大教堂和古典庄园。"
+  lang="zh"
+>
+  <section class="pt-32 pb-24 bg-warm-black">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-ivory mb-6">
+        {t('venues.headline')}
+      </h1>
+      <p class="text-champagne/70 text-lg font-light max-w-2xl mx-auto">
+        {t('venues.subtitle')}
+      </p>
+    </div>
+  </section>
+
+  <section class="py-24 bg-ivory">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {allVenues.map(venue => (
+          <VenueCard
+            name={venue.data.name}
+            location={venue.data.location}
+            type={venue.data.type}
+            priceRange={venue.data.priceRange}
+            exclusive={venue.data.exclusive}
+            description={venue.body ?? ''}
+            slug={venue.data.slug}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</PageLayout>

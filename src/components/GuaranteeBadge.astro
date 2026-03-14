@@ -1,0 +1,19 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div class="bg-mist border border-gold/15 py-6 px-8 max-w-2xl mx-auto text-center">
+  <div class="flex items-center justify-center gap-3 mb-3">
+    <div class="w-8 h-px bg-gold/30"></div>
+    <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20">
+      <path fill-rule="evenodd" d="M10 1l2.928 6.856L20 8.635l-5.072 4.668L16.18 20 10 16.428 3.82 20l1.252-6.697L0 8.635l7.072-.779L10 1z" clip-rule="evenodd" />
+    </svg>
+    <div class="w-8 h-px bg-gold/30"></div>
+  </div>
+  <p class="text-slate text-sm font-light italic leading-relaxed">
+    {t('guarantee')}
+  </p>
+</div>
