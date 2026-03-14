@@ -3,7 +3,8 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://luxurylondonweddings.co.uk',
+  site: 'https://lucawetherall.github.io',
+  base: '/luxurylondonweddings',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
