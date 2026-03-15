@@ -37,7 +37,7 @@ function getLocalePath(targetLang: Lang): string {
     basePath = currentPath.replace(new RegExp(`^/${lang}`), '') || '/';
   }
   if (targetLang === 'en') return basePath;
-  return `/${targetLang}${basePath === '/' ? '' : basePath}`;
+  return `/${targetLang}${basePath === '/' ? '/' : basePath}`;
 }
 
 const canonicalUrl = `${site}${currentPath}`;
@@ -68,6 +68,16 @@ const canonicalUrl = `${site}${currentPath}`;
   <meta property="og:type" content="website" />
   <meta property="og:url" content={canonicalUrl} />
   <meta property="og:site_name" content="Luxury London Weddings" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+
+  <!-- Additional SEO -->
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Luxury London Weddings" />
+  <meta name="theme-color" content="#0F0E0D" />
 
   <!-- Locale-conditional fonts — only load fonts for current locale -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />

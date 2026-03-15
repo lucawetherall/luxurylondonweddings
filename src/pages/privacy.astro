@@ -1,0 +1,30 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { useTranslations } from '../i18n/utils';
+
+const t = useTranslations('en');
+const bodyParagraphs = t('privacy.body').split('\n\n');
+---
+
+<PageLayout
+  title="Privacy Policy — Luxury London Weddings"
+  description="How Luxury London Weddings collects, uses, and protects your personal information."
+>
+  <section class="pt-32 pb-24 bg-warm-black">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-ivory">
+        {t('privacy.headline')}
+      </h1>
+    </div>
+  </section>
+
+  <section class="py-24 bg-ivory">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="space-y-6">
+        {bodyParagraphs.map(p => (
+          <p class="text-slate text-lg font-light leading-relaxed">{p}</p>
+        ))}
+      </div>
+    </div>
+  </section>
+</PageLayout>

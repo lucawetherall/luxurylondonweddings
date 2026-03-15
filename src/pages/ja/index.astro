@@ -11,6 +11,22 @@ import { useTranslations } from '../../i18n/utils';
 
 const t = useTranslations('ja');
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Luxury London Weddings',
+  description: 'ロンドンの教会、チャペル、歴史的な邸宅での前撮り撮影・祝福式・ウェディングフォトの会場手配。',
+  url: 'https://luxurylondonweddings.co.uk/ja/',
+  email: 'hello@luxurylondonweddings.co.uk',
+  areaServed: ['London', 'England', 'Scotland', 'United Kingdom'],
+  serviceType: 'Wedding Venue Brokerage',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'London',
+    addressCountry: 'GB',
+  },
+};
+
 const services = [
   { icon: '⛪', title: t('services.church.title'), description: t('services.church.desc') },
   { icon: '✝', title: t('services.blessing.title'), description: t('services.blessing.desc') },
@@ -25,6 +41,7 @@ const services = [
   title="Luxury London Weddings — 英国の教会・歴史的建造物の会場手配"
   description="ロンドンの教会、チャペル、歴史的な邸宅での前撮り撮影・祝福式・ウェディングフォトの会場手配を承ります。"
   lang="ja"
+  jsonLd={jsonLd}
 >
   <Hero />
   <StatsBar />

@@ -1,4 +1,6 @@
 ---
+import { getLangFromUrl } from '../i18n/utils';
+
 interface Props {
   name: string;
   location: string;
@@ -10,30 +12,37 @@ interface Props {
 }
 
 const { name, location, type, priceRange, exclusive, description, slug } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
 
-const priceLabels: Record<string, string> = {
-  standard: '£',
-  premium: '££',
-  luxury: '£££',
+const priceLabels: Record<string, Record<string, string>> = {
+  en: { standard: '£', premium: '££', luxury: '£££' },
+  zh: { standard: '¥', premium: '¥¥', luxury: '¥¥¥' },
+  ja: { standard: '¥', premium: '¥¥', luxury: '¥¥¥' },
 };
 
-const typeLabels: Record<string, string> = {
-  church: 'Church',
-  chapel: 'Chapel',
-  cathedral: 'Cathedral',
-  estate: 'Estate',
-  castle: 'Castle',
+const typeLabels: Record<string, Record<string, string>> = {
+  en: { church: 'Church', chapel: 'Chapel', cathedral: 'Cathedral', estate: 'Estate', castle: 'Castle' },
+  zh: { church: '教堂', chapel: '礼拜堂', cathedral: '大教堂', estate: '庄园', castle: '城堡' },
+  ja: { church: '教会', chapel: 'チャペル', cathedral: '大聖堂', estate: '邸宅', castle: '城' },
 };
+
+const exclusiveLabels: Record<string, string> = {
+  en: 'Exclusive',
+  zh: '独家',
+  ja: '独占',
+};
+
+const currentPriceLabels = priceLabels[lang] ?? priceLabels.en;
+const currentTypeLabels = typeLabels[lang] ?? typeLabels.en;
 ---
 
 <article class="group bg-mist border border-champagne/30 hover:border-gold/30 transition-all duration-300 overflow-hidden">
-  <!-- Image placeholder: gradient background with venue name -->
   <div class="relative h-56 bg-gradient-to-br from-dark via-slate to-warm-black flex items-end p-6 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-t from-warm-black/80 to-transparent"></div>
     <div class="relative z-10">
       {exclusive && (
         <span class="inline-block text-gold text-[10px] tracking-[0.2em] uppercase font-medium border border-gold/30 px-2 py-1 mb-2">
-          Exclusive
+          {exclusiveLabels[lang] ?? exclusiveLabels.en}
         </span>
       )}
       <h3 class="font-serif text-2xl text-ivory font-light leading-tight">{name}</h3>
@@ -44,9 +53,9 @@ const typeLabels: Record<string, string> = {
     <div class="flex items-center gap-3 mb-4 text-sm">
       <span class="text-gold font-light">{location}</span>
       <span class="text-champagne/30">·</span>
-      <span class="text-slate font-light capitalize">{typeLabels[type] ?? type}</span>
+      <span class="text-slate font-light">{currentTypeLabels[type] ?? type}</span>
       <span class="text-champagne/30">·</span>
-      <span class="text-gold font-light">{priceLabels[priceRange] ?? priceRange}</span>
+      <span class="text-gold font-light">{currentPriceLabels[priceRange] ?? priceRange}</span>
     </div>
     <p class="text-slate text-sm font-light leading-relaxed line-clamp-3">
       {description}
