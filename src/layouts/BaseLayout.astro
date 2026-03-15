@@ -37,7 +37,7 @@ function getLocalePath(targetLang: Lang): string {
     basePath = currentPath.replace(new RegExp(`^/${lang}`), '') || '/';
   }
   if (targetLang === 'en') return basePath;
-  return `/${targetLang}${basePath === '/' ? '' : basePath}`;
+  return `/${targetLang}${basePath === '/' ? '/' : basePath}`;
 }
 
 const canonicalUrl = `${site}${currentPath}`;

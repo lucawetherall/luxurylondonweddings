@@ -16,12 +16,14 @@ const navItems = [
 ---
 
 <footer class="bg-warm-black border-t border-gold/10">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-20">
     <div class="grid lg:grid-cols-3 gap-12 lg:gap-8">
       <!-- Brand -->
       <div>
-        <h3 class="font-serif text-2xl text-ivory font-light mb-4">Luxury London Weddings</h3>
-        <p class="text-champagne/50 text-sm font-light leading-relaxed max-w-xs">
+        <a href={tp('/')} class="inline-block mb-4">
+          <h3 class="font-serif text-2xl text-ivory font-light hover:text-gold transition-colors duration-300">Luxury London Weddings</h3>
+        </a>
+        <p class="text-champagne/40 text-sm font-light leading-relaxed max-w-xs">
           {lang === 'en' && 'Church and heritage venue brokerage for overseas wedding agents and couples.'}
           {lang === 'zh' && '为海外婚礼策划师和新人提供英国教堂与古典场地预订服务。'}
           {lang === 'ja' && '海外のウェディングエージェントとカップルのための英国教会・歴史的建造物の会場手配。'}
@@ -32,7 +34,7 @@ const navItems = [
       <div>
         <nav class="flex flex-wrap gap-x-8 gap-y-3">
           {navItems.map(item => (
-            <a href={item.href} class="text-champagne/50 hover:text-gold text-sm font-light tracking-wider uppercase transition-colors">
+            <a href={item.href} class="text-champagne/40 hover:text-gold text-sm font-light tracking-wider uppercase transition-colors duration-200">
               {item.label}
             </a>
           ))}
@@ -46,10 +48,10 @@ const navItems = [
     </div>
 
     <div class="mt-12 pt-8 border-t border-gold/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-champagne/30 text-xs font-light">{t('footer.rights')}</p>
+      <p class="text-champagne/25 text-xs font-light">{t('footer.rights')}</p>
       <div class="flex gap-6">
-        <a href={tp('/privacy/')} class="text-champagne/30 hover:text-gold text-xs font-light transition-colors">{t('footer.privacy')}</a>
-        <a href={tp('/terms/')} class="text-champagne/30 hover:text-gold text-xs font-light transition-colors">{t('footer.terms')}</a>
+        <a href={tp('/privacy/')} class="text-champagne/25 hover:text-gold text-xs font-light transition-colors duration-200">{t('footer.privacy')}</a>
+        <a href={tp('/terms/')} class="text-champagne/25 hover:text-gold text-xs font-light transition-colors duration-200">{t('footer.terms')}</a>
       </div>
     </div>
   </div>
