@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://luxurylondonweddings.co.uk',
+  base: '/luxurylondonweddings',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
