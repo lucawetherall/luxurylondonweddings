@@ -63,14 +63,14 @@ export const ui = {
     // Agent CTA
     'agentCta.label': 'For Wedding Agents',
     'agentCta.title': 'Your UK Venue Partner',
-    'agentCta.body': 'Whether you run a photography studio sending couples from mainland China, a destination wedding agency in Hong Kong, or a maedori service in Tokyo — we handle the UK side. Add us on WeChat for our full venue portfolio, or get in touch by email.',
+    'agentCta.body': 'Whether you run a photography studio sending couples from mainland China, a destination wedding agency in Hong Kong, or a pre-wedding photography service in Tokyo — we handle the UK side. Add us on WeChat for our full venue portfolio, or get in touch by email.',
 
     // Venue Marquee
     'venueMarquee': 'St Bartholomew the Great · Temple Church · St Etheldreda\'s · Christ Church Oxford · Blenheim Palace · Cornwell Manor · Bath Abbey · St Mary-le-Bow · Hedsor House · Castle Combe · King\'s College Chapel · Southwark Cathedral · St Bride\'s Fleet Street · Magdalen College Chapel · Stowe House',
 
     // Contact
     'contact.headline': 'Get in Touch',
-    'contact.footer': 'We respond to all enquiries within 24 hours. For urgent bookings, please use WeChat or call directly.',
+    'contact.footer': 'We respond to all enquiries within 24 hours. For urgent bookings, please contact us via WeChat.',
     'contact.email': 'Email',
     'contact.wechat': 'WeChat',
 
@@ -103,6 +103,14 @@ export const ui = {
     // Venues page
     'venues.headline': 'Our Venues',
     'venues.subtitle': 'Churches, chapels, cathedrals, and heritage estates across England and Scotland.',
+
+    // Privacy Policy
+    'privacy.headline': 'Privacy Policy',
+    'privacy.body': "Luxury London Weddings (\"we\", \"us\", \"our\") is committed to protecting your privacy. This policy explains how we collect, use, and safeguard your personal information.\n\nInformation We Collect\nWe collect information you provide directly: your name, email address, phone number, WeChat or LINE ID, wedding dates, and venue preferences. We also collect standard analytics data including IP addresses, browser type, and pages visited.\n\nHow We Use Your Information\nWe use your information to respond to enquiries, arrange venue bookings, coordinate with venues and service providers on your behalf, and send relevant updates about your booking. We do not sell your personal data to third parties.\n\nData Sharing\nWe share your information only with venues, clergy, and service providers directly involved in fulfilling your booking. We may also share data with our sister company, London Choral Services, when choir services are included.\n\nData Retention\nWe retain your personal data for up to three years after your last booking or enquiry, after which it is securely deleted.\n\nYour Rights\nYou have the right to access, correct, or delete your personal data at any time. To exercise these rights, contact us at hello@luxurylondonweddings.co.uk.\n\nCookies\nOur website uses essential cookies for site functionality and analytics cookies to understand how visitors use our site. You can disable cookies in your browser settings.\n\nContact\nFor privacy-related questions, email hello@luxurylondonweddings.co.uk.",
+
+    // Terms of Service
+    'terms.headline': 'Terms of Service',
+    'terms.body': "These terms govern your use of the Luxury London Weddings website and services.\n\nOur Services\nLuxury London Weddings acts as an intermediary between clients (couples and wedding agents) and venues (churches, chapels, estates, and heritage properties). We arrange access, coordinate logistics, and manage bookings on your behalf.\n\nBooking and Payment\nAll bookings are subject to venue availability and confirmation. A booking is confirmed only when you receive written confirmation from us. Payment terms are specified in your individual booking agreement. Venue fees, service charges, and any additional costs are itemised in your quote.\n\nCancellation Policy\nCancellations made more than 30 days before the booking date receive a full refund of our service fee. Cancellations within 30 days are subject to a 50% service fee. Venue-specific cancellation charges may also apply and are detailed in your booking agreement.\n\nOur Guarantee\nIf any venue does not match its portfolio description, your booking fee is refunded in full. This guarantee applies to material discrepancies, not to minor variations due to seasonal changes or ongoing restoration work.\n\nLiability\nWhile we take every care to ensure accuracy, we are not liable for circumstances beyond our control, including weather, venue closures due to religious services, or last-minute restrictions imposed by venue management. We will always offer an alternative venue or full refund in such cases.\n\nIntellectual Property\nAll content on this website, including text, design, and branding, is the property of Luxury London Weddings and may not be reproduced without permission.\n\nGoverning Law\nThese terms are governed by the laws of England and Wales.\n\nContact\nFor questions about these terms, email hello@luxurylondonweddings.co.uk.",
   },
   zh: {
     // Nav
@@ -136,7 +144,7 @@ export const ui = {
     'services.estate.title': '古堡庄园拍摄',
     'services.estate.desc': '英格兰与苏格兰的乡间别墅、城堡、庄园——半日或全日独享租赁。壮丽内饰、精致庭园，真正的英伦气派。',
     'services.multiVenue.title': '多场地一日行程',
-    'services.multiVenue.desc': '一天之内游览3-4个场地——教堂、庄园、城市地标——含交通安排、各场地时间窗口与全部入场费用。',
+    'services.multiVenue.desc': '一天之内巡拍3–4个场地——教堂、庄园、城市地标——含交通安排、各场地时间窗口与全部入场费用。',
     'services.choir.title': '现场合唱',
     'services.choir.desc': '哥特式教堂中的专业英式合唱——拍摄或仪式期间15分钟现场演奏，足以成为整段视频的灵魂。由我们旗下的London Choral Services提供。',
     'services.agent.title': '代理商合作',
@@ -200,6 +208,14 @@ export const ui = {
     // Venues page
     'venues.headline': '精选场地',
     'venues.subtitle': '英格兰和苏格兰的教堂、礼拜堂、大教堂和古典庄园。',
+
+    // Privacy Policy
+    'privacy.headline': '隐私政策',
+    'privacy.body': "Luxury London Weddings（以下简称"我们"）致力于保护您的隐私。本政策说明我们如何收集、使用和保护您的个人信息。\n\n我们收集的信息\n我们收集您直接提供的信息：姓名、电子邮件地址、电话号码、微信号、婚礼日期和场地偏好。我们还收集标准分析数据，包括IP地址、浏览器类型和访问页面。\n\n信息用途\n我们使用您的信息来回复咨询、安排场地预订、代您与场地和服务提供商协调，以及发送与您的预订相关的更新。我们不会将您的个人数据出售给第三方。\n\n数据共享\n我们仅与直接参与您预订服务的场地、神职人员和服务提供商共享您的信息。如果包含合唱服务，我们也可能与姊妹公司London Choral Services共享数据。\n\n数据保留\n我们在您最后一次预订或咨询后保留您的个人数据最长三年，之后将安全删除。\n\n您的权利\n您有权随时访问、更正或删除您的个人数据。如需行使这些权利，请联系hello@luxurylondonweddings.co.uk。\n\nCookie\n我们的网站使用必要的Cookie来维护网站功能，使用分析Cookie来了解访客如何使用我们的网站。您可以在浏览器设置中禁用Cookie。\n\n联系方式\n如有隐私相关问题，请发送邮件至hello@luxurylondonweddings.co.uk。",
+
+    // Terms of Service
+    'terms.headline': '服务条款',
+    'terms.body': "以下条款适用于您使用Luxury London Weddings的网站和服务。\n\n我们的服务\nLuxury London Weddings作为客户（新人和婚礼策划师）与场地（教堂、礼拜堂、庄园和历史建筑）之间的中介。我们代您安排入场、协调后勤并管理预订。\n\n预订与付款\n所有预订均取决于场地的空档和确认。只有在您收到我们的书面确认后，预订方为有效。付款条款在您的个人预订协议中注明。场地费、服务费和任何附加费用均在报价中逐项列明。\n\n取消政策\n在预订日期前30天以上取消，可全额退还我们的服务费。30天以内取消，需支付50%的服务费。场地方面的取消费用另行计算，详见您的预订协议。\n\n我们的保证\n如果任何场地与其图册描述不符，全额退还您的预订费。此保证适用于重大差异，不包括因季节变化或正在进行的修复工程导致的细微差别。\n\n责任\n尽管我们尽一切努力确保准确性，但对于我们无法控制的情况，包括天气、因宗教活动导致的场地关闭或场地管理方临时施加的限制，我们不承担责任。在此类情况下，我们将提供替代场地或全额退款。\n\n知识产权\n本网站上的所有内容，包括文字、设计和品牌标识，均为Luxury London Weddings的财产，未经许可不得转载。\n\n适用法律\n本条款受英格兰和威尔士法律管辖。\n\n联系方式\n如对本条款有疑问，请发送邮件至hello@luxurylondonweddings.co.uk。",
   },
   ja: {
     // Nav
@@ -297,6 +313,14 @@ export const ui = {
     // Venues page
     'venues.headline': '厳選会場',
     'venues.subtitle': 'イングランドとスコットランドの教会、チャペル、大聖堂、歴史的邸宅。',
+
+    // Privacy Policy
+    'privacy.headline': 'プライバシーポリシー',
+    'privacy.body': "Luxury London Weddings（以下「当社」）は、お客様のプライバシーの保護に努めています。本ポリシーでは、当社が個人情報をどのように収集、利用、保護するかについてご説明します。\n\n収集する情報\n当社は、お客様から直接ご提供いただく情報を収集します。お名前、メールアドレス、電話番号、LINE ID、挙式日、会場のご希望などです。また、IPアドレス、ブラウザの種類、閲覧ページなどの標準的なアクセス解析データも収集します。\n\n情報の利用目的\nお問い合わせへの対応、会場の予約手配、会場やサービス提供者との調整、ご予約に関する情報のご連絡に利用します。お客様の個人情報を第三者に販売することはありません。\n\nデータの共有\nお客様の情報は、ご予約の遂行に直接関わる会場、聖職者、サービス提供者とのみ共有します。聖歌隊サービスが含まれる場合、姉妹会社のLondon Choral Servicesとデータを共有することがあります。\n\nデータの保管期間\nお客様の個人情報は、最後のご予約またはお問い合わせから最長3年間保管し、その後安全に削除します。\n\nお客様の権利\nお客様は、いつでもご自身の個人情報にアクセスし、訂正または削除を求める権利があります。これらの権利の行使については、hello@luxurylondonweddings.co.ukまでご連絡ください。\n\nCookie\n当社のウェブサイトでは、サイトの機能維持に必要なCookieと、訪問者の利用状況を把握するためのアクセス解析Cookieを使用しています。Cookieはブラウザの設定で無効にできます。\n\nお問い合わせ\nプライバシーに関するご質問は、hello@luxurylondonweddings.co.ukまでメールでお問い合わせください。",
+
+    // Terms of Service
+    'terms.headline': '利用規約',
+    'terms.body': "以下の規約は、Luxury London Weddingsのウェブサイトおよびサービスのご利用に適用されます。\n\n当社のサービス\nLuxury London Weddingsは、お客様（カップルおよびウェディングエージェント）と会場（教会、チャペル、邸宅、歴史的建造物）との仲介役を務めます。お客様に代わり、会場へのアクセス手配、物流の調整、予約の管理を行います。\n\nご予約とお支払い\nすべてのご予約は、会場の空き状況と確認を条件とします。ご予約は、当社からの書面による確認をもって確定となります。お支払い条件は、個別のご予約契約に記載されます。会場費、サービス料、追加費用はすべてお見積りに明記されます。\n\nキャンセルポリシー\nご予約日の30日前までのキャンセルは、当社サービス料を全額返金いたします。30日以内のキャンセルは、サービス料の50%をいただきます。会場固有のキャンセル料が別途発生する場合があり、詳細はご予約契約に記載されます。\n\n当社の保証\n会場がカタログの説明と異なる場合、ご予約料金を全額返金いたします。この保証は重大な相違に適用され、季節の変化や進行中の修復工事による軽微な変動は対象外です。\n\n免責事項\n当社は正確性の確保に最善を尽くしますが、天候、宗教行事による会場の閉鎖、会場管理者による急な制限変更など、当社の管理が及ばない事情については責任を負いかねます。そのような場合は、代替会場のご提案または全額返金で対応いたします。\n\n知的財産権\n本ウェブサイト上のすべてのコンテンツ（テキスト、デザイン、ブランディングを含む）は、Luxury London Weddingsの所有物であり、許可なく複製することはできません。\n\n準拠法\n本規約は、イングランドおよびウェールズの法律に準拠します。\n\nお問い合わせ\n本規約に関するご質問は、hello@luxurylondonweddings.co.ukまでメールでお問い合わせください。",
   },
 } as const;
 

@@ -48,8 +48,8 @@ const navItems = [
     <div class="mt-12 pt-8 border-t border-gold/5 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p class="text-champagne/30 text-xs font-light">{t('footer.rights')}</p>
       <div class="flex gap-6">
-        <span class="text-champagne/30 text-xs font-light">{t('footer.privacy')}</span>
-        <span class="text-champagne/30 text-xs font-light">{t('footer.terms')}</span>
+        <a href={tp('/privacy/')} class="text-champagne/30 hover:text-gold text-xs font-light transition-colors">{t('footer.privacy')}</a>
+        <a href={tp('/terms/')} class="text-champagne/30 hover:text-gold text-xs font-light transition-colors">{t('footer.terms')}</a>
       </div>
     </div>
   </div>

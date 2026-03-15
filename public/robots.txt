@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://luxurylondonweddings.co.uk/sitemap-index.xml
