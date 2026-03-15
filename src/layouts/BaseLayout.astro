@@ -28,19 +28,28 @@ const fontUrls: Record<Lang, string> = {
 
 const currentPath = Astro.url.pathname;
 const site = Astro.site?.origin ?? 'https://luxurylondonweddings.co.uk';
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase === '/' ? '' : rawBase.replace(/\/$/, '');
 
-// Build canonical and hreflang URLs
+// Build canonical and hreflang URLs (paths without base prefix for absolute URLs)
 function getLocalePath(targetLang: Lang): string {
-  let basePath = currentPath;
+  // Strip base prefix first
+  let stripped = currentPath;
+  if (base && stripped.startsWith(base)) {
+    stripped = stripped.slice(base.length) || '/';
+  }
   // Remove current lang prefix
+  let basePath = stripped;
   if (lang !== 'en') {
-    basePath = currentPath.replace(new RegExp(`^/${lang}`), '') || '/';
+    basePath = stripped.replace(new RegExp(`^/${lang}`), '') || '/';
   }
   if (targetLang === 'en') return basePath;
   return `/${targetLang}${basePath === '/' ? '/' : basePath}`;
 }
 
-const canonicalUrl = `${site}${currentPath}`;
+// Canonical URLs should use the real domain without base prefix
+const pathWithoutBase = base && currentPath.startsWith(base) ? currentPath.slice(base.length) || '/' : currentPath;
+const canonicalUrl = `${site}${pathWithoutBase}`;
 ---
 
 <!DOCTYPE html>
@@ -85,7 +94,7 @@ const canonicalUrl = `${site}${currentPath}`;
   <link href={fontUrls[lang]} rel="stylesheet" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
 
   {jsonLd && (
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
