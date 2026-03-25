@@ -12,34 +12,41 @@ const items = [
 ];
 ---
 
-<section class="py-24 lg:py-32 bg-ivory">
+<section class="py-28 lg:py-36 bg-ivory">
   <div class="max-w-6xl mx-auto px-6 lg:px-8">
-    <div class="text-center mb-16">
+    <div class="mb-20">
       <p class="text-gold tracking-[0.2em] uppercase text-sm font-light mb-4">
         {t('whyUs.label')}
       </p>
-      <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-light text-dark">
+      <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-light text-dark max-w-lg">
         {t('whyUs.title')}
       </h2>
     </div>
 
-    <div class="space-y-16">
-      {items.map((item) => (
-        <div class="fade-in-section grid lg:grid-cols-12 gap-6 lg:gap-12 items-start">
-          <div class="lg:col-span-1">
-            <span class="text-gold/40 font-serif text-2xl font-light">{item.num}</span>
+    <div class="space-y-0">
+      {items.map((item, i) => (
+        <>
+          <div class="fade-in-section grid lg:grid-cols-12 gap-6 lg:gap-12 items-start py-10">
+            <div class="lg:col-span-1">
+              <span class="text-gold/30 font-serif text-2xl font-light">{item.num}</span>
+            </div>
+            <div class="lg:col-span-3">
+              <h3 class="font-serif text-2xl lg:text-3xl font-normal text-dark">
+                {item.title}
+              </h3>
+            </div>
+            <div class="lg:col-span-8">
+              <p class="text-slate text-base lg:text-lg font-light leading-relaxed">
+                {item.desc}
+              </p>
+            </div>
           </div>
-          <div class="lg:col-span-3">
-            <h3 class="font-serif text-2xl lg:text-3xl font-normal text-dark">
-              {item.title}
-            </h3>
-          </div>
-          <div class="lg:col-span-8">
-            <p class="text-slate text-base lg:text-lg font-light leading-relaxed">
-              {item.desc}
-            </p>
-          </div>
-        </div>
+          {i < items.length - 1 && (
+            <div class="flex justify-center">
+              <div class="w-8 h-px bg-gold/20"></div>
+            </div>
+          )}
+        </>
       ))}
     </div>
   </div>
