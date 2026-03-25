@@ -5,21 +5,23 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const stats = [
-  t('stats.venues'),
-  t('stats.types'),
-  t('stats.locations'),
-  t('stats.confirmation'),
+  { value: '50+', label: t('stats.venues').replace(/^50\+?\s*/i, '').replace(/^50\+/, '') },
+  { value: '5', label: lang === 'en' ? 'Regions' : lang === 'zh' ? '个地区' : '地域' },
+  { value: '72h', label: lang === 'en' ? 'Confirmation' : lang === 'zh' ? '确认' : '確認' },
+  { value: '3', label: lang === 'en' ? 'Venue Types' : lang === 'zh' ? '场地类型' : '会場タイプ' },
 ];
 ---
 
-<div class="bg-dark border-y border-gold/10">
-  <div class="max-w-7xl mx-auto px-6 py-6">
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
-      {stats.map((stat) => (
-        <div class="text-center">
-          <p class="text-gold text-sm lg:text-base font-light tracking-wide">
-            {stat}
-          </p>
+<div class="bg-warm-black border-y border-gold/10">
+  <div class="max-w-5xl mx-auto px-6 py-10 lg:py-12">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0">
+      {stats.map((stat, i) => (
+        <div class:list={[
+          'text-center',
+          i < stats.length - 1 && 'lg:border-r lg:border-gold/15',
+        ]}>
+          <div class="font-serif text-3xl lg:text-4xl text-gold font-light tracking-wide">{stat.value}</div>
+          <div class="text-champagne/50 text-[11px] tracking-[0.2em] uppercase mt-2 font-light">{stat.label}</div>
         </div>
       ))}
     </div>

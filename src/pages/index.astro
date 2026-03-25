@@ -29,12 +29,12 @@ const jsonLd = {
 };
 
 const services = [
-  { icon: '⛪', title: t('services.church.title'), description: t('services.church.desc') },
-  { icon: '✝', title: t('services.blessing.title'), description: t('services.blessing.desc') },
-  { icon: '🏛', title: t('services.estate.title'), description: t('services.estate.desc') },
-  { icon: '🗺', title: t('services.multiVenue.title'), description: t('services.multiVenue.desc') },
-  { icon: '🎵', title: t('services.choir.title'), description: t('services.choir.desc') },
-  { icon: '🤝', title: t('services.agent.title'), description: t('services.agent.desc') },
+  { title: t('services.church.title'), description: t('services.church.desc') },
+  { title: t('services.blessing.title'), description: t('services.blessing.desc') },
+  { title: t('services.estate.title'), description: t('services.estate.desc') },
+  { title: t('services.multiVenue.title'), description: t('services.multiVenue.desc') },
+  { title: t('services.choir.title'), description: t('services.choir.desc') },
+  { title: t('services.agent.title'), description: t('services.agent.desc') },
 ];
 ---
 
@@ -47,19 +47,19 @@ const services = [
   <StatsBar />
 
   <!-- Services -->
-  <section class="py-24 lg:py-32 bg-ivory">
+  <section class="py-28 lg:py-36 bg-ivory">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16">
+      <div class="mb-16">
         <p class="text-gold tracking-[0.2em] uppercase text-sm font-light mb-4">
           {t('services.label')}
         </p>
-        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-light text-dark">
+        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-light text-dark max-w-lg">
           {t('services.title')}
         </h2>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {services.map(s => (
-          <ServiceCard title={s.title} description={s.description} icon={s.icon} />
+        {services.map((s, i) => (
+          <ServiceCard title={s.title} description={s.description} index={i} />
         ))}
       </div>
     </div>
@@ -68,7 +68,7 @@ const services = [
   <VenueMarquee />
   <WhyUs />
 
-  <div class="py-12 bg-ivory">
+  <div class="py-16 bg-ivory">
     <GuaranteeBadge />
   </div>
 

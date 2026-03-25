@@ -6,13 +6,21 @@ const t = useTranslations(lang);
 const venues = t('venueMarquee');
 ---
 
-<div class="bg-dark py-5 overflow-hidden border-y border-gold/10">
-  <div class="flex whitespace-nowrap">
-    <div class="marquee-track flex items-center">
-      <span class="text-gold/60 text-sm tracking-[0.15em] uppercase font-light px-4">{venues}</span>
-      <span class="text-gold/30 px-4">·</span>
-      <span class="text-gold/60 text-sm tracking-[0.15em] uppercase font-light px-4">{venues}</span>
-      <span class="text-gold/30 px-4">·</span>
+<div class="bg-dark overflow-hidden">
+  <div class="flex justify-center py-3">
+    <div class="w-12 h-px bg-gold/15"></div>
+  </div>
+  <div class="py-4">
+    <div class="flex whitespace-nowrap">
+      <div class="marquee-track flex items-center">
+        <span class="text-gold/50 text-xs tracking-[0.2em] uppercase font-light px-4">{venues}</span>
+        <span class="text-gold/20 px-4">·</span>
+        <span class="text-gold/50 text-xs tracking-[0.2em] uppercase font-light px-4">{venues}</span>
+        <span class="text-gold/20 px-4">·</span>
+      </div>
     </div>
+  </div>
+  <div class="flex justify-center py-3">
+    <div class="w-12 h-px bg-gold/15"></div>
   </div>
 </div>

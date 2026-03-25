@@ -103,27 +103,74 @@ h1, h2, h3 {
 .hero-fade-up:nth-child(4) { animation-delay: 450ms; }
 .hero-fade-up:nth-child(5) { animation-delay: 600ms; }
 
-/* Service card gold border animation */
+/* Service card border animation */
 .service-card {
-  position: relative;
-  overflow: hidden;
+  border: 1px solid rgba(184, 150, 90, 0.15);
+  transition: border-color 0.3s ease;
 }
 
-.service-card::before {
+.service-card:hover {
+  border-color: var(--color-gold);
+}
+
+/* Gold ornament divider */
+.gold-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.gold-ornament::before,
+.gold-ornament::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--color-gold);
+  opacity: 0.4;
+}
+
+.gold-ornament .diamond {
+  width: 4px;
+  height: 4px;
+  background: var(--color-gold);
+  transform: rotate(45deg);
+  opacity: 0.5;
+}
+
+/* Gold ornament divider */
+.gold-rule {
+  width: 48px;
+  height: 1px;
+  background-color: var(--color-gold);
+  margin: 0 auto;
+}
+
+.gold-rule-short {
+  width: 32px;
+  height: 1px;
+  background-color: var(--color-gold);
+}
+
+/* Nav link underline hover */
+.nav-link-hover {
+  position: relative;
+}
+
+.nav-link-hover::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--color-gold);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
+  bottom: -2px;
+  left: 50%;
+  right: 50%;
+  height: 1px;
+  background-color: var(--color-gold);
+  transition: left 0.25s ease, right 0.25s ease;
 }
 
-.service-card:hover::before {
-  transform: scaleX(1);
+.nav-link-hover:hover::after {
+  left: 0;
+  right: 0;
 }
 
 /* Venue marquee */
@@ -152,12 +199,56 @@ h1, h2, h3 {
   transform: translateY(0);
 }
 
+/* Staggered children animation */
+.fade-in-section.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.stagger-children.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+.stagger-children.is-visible > *:nth-child(2) { transition-delay: 80ms; }
+.stagger-children.is-visible > *:nth-child(3) { transition-delay: 160ms; }
+.stagger-children.is-visible > *:nth-child(4) { transition-delay: 240ms; }
+.stagger-children.is-visible > *:nth-child(5) { transition-delay: 320ms; }
+.stagger-children.is-visible > *:nth-child(6) { transition-delay: 400ms; }
+
+.stagger-children.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Nav scroll effect */
 .nav-scrolled {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(184, 150, 90, 0.15);
-  background-color: rgba(15, 14, 13, 0.92);
+  border-bottom: 1px solid rgba(184, 150, 90, 0.1);
+  background-color: rgba(15, 14, 13, 0.95);
+}
+
+/* Button hover breathing effect */
+.btn-primary {
+  transition: background-color 0.25s ease, letter-spacing 0.25s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-gold-light);
+  letter-spacing: 0.15em;
+}
+
+.btn-ghost {
+  transition: border-color 0.25s ease, background-color 0.25s ease, letter-spacing 0.25s ease;
+}
+
+.btn-ghost:hover {
+  border-color: var(--color-gold);
+  background-color: rgba(184, 150, 90, 0.08);
+  letter-spacing: 0.15em;
 }
 
 /* Selection color */
@@ -183,6 +274,12 @@ h1, h2, h3 {
     transition: none;
   }
 
+  .stagger-children > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
   * {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
@@ -200,4 +297,16 @@ button:focus-visible {
 .prose a {
   text-decoration-color: var(--color-gold);
   text-underline-offset: 0.15em;
+}
+
+/* Scroll indicator animation */
+@keyframes scrollLine {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+.scroll-indicator-line {
+  animation: scrollLine 2s ease-in-out infinite;
 }

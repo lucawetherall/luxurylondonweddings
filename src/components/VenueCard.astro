@@ -9,9 +9,10 @@ interface Props {
   exclusive?: boolean;
   description: string;
   slug: string;
+  founded?: string;
 }
 
-const { name, location, type, priceRange, exclusive, description, slug } = Astro.props;
+const { name, location, type, priceRange, exclusive, description, slug, founded } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 
 const priceLabels: Record<string, Record<string, string>> = {
@@ -32,33 +33,43 @@ const exclusiveLabels: Record<string, string> = {
   ja: '独占',
 };
 
+const viewLabels: Record<string, string> = {
+  en: 'View',
+  zh: '查看',
+  ja: '詳細',
+};
+
 const currentPriceLabels = priceLabels[lang] ?? priceLabels.en;
 const currentTypeLabels = typeLabels[lang] ?? typeLabels.en;
+
+// Truncate description to ~120 chars
+const shortDesc = description.length > 120 ? description.slice(0, 117).replace(/\s+\S*$/, '') + '...' : description;
 ---
 
-<article class="group bg-mist border border-champagne/30 hover:border-gold/30 transition-all duration-300 overflow-hidden">
-  <div class="relative h-56 bg-gradient-to-br from-dark via-slate to-warm-black flex items-end p-6 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-t from-warm-black/80 to-transparent"></div>
-    <div class="relative z-10">
-      {exclusive && (
-        <span class="inline-block text-gold text-[10px] tracking-[0.2em] uppercase font-medium border border-gold/30 px-2 py-1 mb-2">
-          {exclusiveLabels[lang] ?? exclusiveLabels.en}
-        </span>
+<article class="group border border-gold/15 hover:border-gold/50 transition-all duration-300 bg-ivory p-7 flex flex-col justify-between min-h-[280px]">
+  <div>
+    <div class="flex items-start justify-between mb-5">
+      <div class="flex items-center gap-3">
+        <span class="text-gold text-[10px] tracking-[0.2em] uppercase font-light">{currentTypeLabels[type] ?? type}</span>
+        {exclusive && (
+          <span class="text-[10px] tracking-[0.15em] uppercase font-light text-gold/60 border border-gold/20 px-1.5 py-0.5">
+            {exclusiveLabels[lang] ?? exclusiveLabels.en}
+          </span>
+        )}
+      </div>
+      {founded && (
+        <span class="text-gold/40 text-[10px] tracking-[0.15em] uppercase font-light">Est. {founded}</span>
       )}
-      <h3 class="font-serif text-2xl text-ivory font-light leading-tight">{name}</h3>
     </div>
+    <h3 class="font-serif text-2xl lg:text-[1.65rem] font-light text-dark leading-tight mb-3">{name}</h3>
+    <p class="text-slate text-sm font-light leading-relaxed">{shortDesc}</p>
   </div>
 
-  <div class="p-6">
-    <div class="flex items-center gap-3 mb-4 text-sm">
-      <span class="text-gold font-light">{location}</span>
-      <span class="text-champagne/30">·</span>
-      <span class="text-slate font-light">{currentTypeLabels[type] ?? type}</span>
-      <span class="text-champagne/30">·</span>
-      <span class="text-gold font-light">{currentPriceLabels[priceRange] ?? priceRange}</span>
+  <div class="flex items-center justify-between mt-5 pt-4 border-t border-gold/10">
+    <span class="text-champagne text-[11px] tracking-wide font-light">{location}</span>
+    <div class="flex items-center gap-3">
+      <span class="text-gold/50 text-xs font-light">{currentPriceLabels[priceRange] ?? priceRange}</span>
+      <span class="text-gold text-[11px] tracking-[0.15em] uppercase font-light group-hover:tracking-[0.2em] transition-all duration-300">{viewLabels[lang] ?? 'View'} →</span>
     </div>
-    <p class="text-slate text-sm font-light leading-relaxed line-clamp-3">
-      {description}
-    </p>
   </div>
 </article>

@@ -1,6 +1,5 @@
 ---
 import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
-import PlatformIcons from './PlatformIcons.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -13,45 +12,68 @@ const navItems = [
   { label: t('nav.about'), href: tp('/about/') },
   { label: t('nav.contact'), href: tp('/contact/') },
 ];
+
+type Platform = { name: string };
+
+const platformsByLocale: Record<string, Platform[]> = {
+  en: [{ name: 'Instagram' }, { name: 'Pinterest' }, { name: 'LinkedIn' }],
+  zh: [{ name: '小红书' }, { name: '抖音' }, { name: '微信' }],
+  ja: [{ name: 'Instagram' }, { name: 'LINE' }, { name: 'X' }],
+};
+
+const platforms = platformsByLocale[lang] ?? platformsByLocale.en;
 ---
 
-<footer class="bg-warm-black border-t border-gold/10">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-20">
-    <div class="grid lg:grid-cols-3 gap-12 lg:gap-8">
-      <!-- Brand -->
-      <div>
-        <a href={tp('/')} class="inline-block mb-4">
-          <h3 class="font-serif text-2xl text-ivory font-light hover:text-gold transition-colors duration-300">Luxury London Weddings</h3>
-        </a>
-        <p class="text-champagne/40 text-sm font-light leading-relaxed max-w-xs">
-          {lang === 'en' && 'Church and heritage venue brokerage for overseas wedding agents and couples.'}
-          {lang === 'zh' && '为海外婚礼策划师和新人提供英国教堂与古典场地预订服务。'}
-          {lang === 'ja' && '海外のウェディングエージェントとカップルのための英国教会・歴史的建造物の会場手配。'}
-        </p>
-      </div>
-
-      <!-- Navigation -->
-      <div>
-        <nav class="flex flex-wrap gap-x-8 gap-y-3">
-          {navItems.map(item => (
-            <a href={item.href} class="text-champagne/40 hover:text-gold text-sm font-light tracking-wider uppercase transition-colors duration-200">
-              {item.label}
-            </a>
-          ))}
-        </nav>
-      </div>
-
-      <!-- Platforms -->
-      <div class="lg:text-right">
-        <PlatformIcons />
-      </div>
+<footer class="bg-warm-black">
+  <div class="max-w-4xl mx-auto px-6 pt-16 pb-10 lg:pt-20 lg:pb-12">
+    <!-- Gold rule entrance -->
+    <div class="flex justify-center mb-10">
+      <div class="w-12 h-px bg-gold"></div>
     </div>
 
-    <div class="mt-12 pt-8 border-t border-gold/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-champagne/25 text-xs font-light">{t('footer.rights')}</p>
-      <div class="flex gap-6">
-        <a href={tp('/privacy/')} class="text-champagne/25 hover:text-gold text-xs font-light transition-colors duration-200">{t('footer.privacy')}</a>
-        <a href={tp('/terms/')} class="text-champagne/25 hover:text-gold text-xs font-light transition-colors duration-200">{t('footer.terms')}</a>
+    <!-- Brand -->
+    <div class="text-center mb-10">
+      <a href={tp('/')} class="inline-block group">
+        <h3 class="font-serif text-2xl lg:text-3xl text-ivory font-light tracking-wide group-hover:text-gold transition-colors duration-300">
+          Luxury London Weddings
+        </h3>
+      </a>
+      <p class="text-champagne/30 text-[11px] tracking-[0.25em] uppercase mt-3 font-light">
+        {lang === 'en' && 'Church & Heritage Venue Brokerage'}
+        {lang === 'zh' && '英国教堂与古典场地预订'}
+        {lang === 'ja' && '英国教会・歴史的建造物の会場手配'}
+      </p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="flex items-center justify-center flex-wrap gap-x-2 gap-y-2 mb-8">
+      {navItems.map((item, i) => (
+        <>
+          <a href={item.href} class="text-champagne/40 hover:text-gold text-xs font-light tracking-[0.15em] uppercase transition-colors duration-200">
+            {item.label}
+          </a>
+          {i < navItems.length - 1 && (
+            <span class="text-gold/20 text-xs">·</span>
+          )}
+        </>
+      ))}
+    </nav>
+
+    <!-- Social platforms -->
+    <div class="flex items-center justify-center gap-6 mb-10">
+      {platforms.map((p) => (
+        <span class="text-gold/50 hover:text-gold text-xs font-light tracking-wide transition-colors duration-200 cursor-pointer">
+          {p.name}
+        </span>
+      ))}
+    </div>
+
+    <!-- Copyright -->
+    <div class="border-t border-gold/8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-champagne/20 text-[11px] font-light">{t('footer.rights')}</p>
+      <div class="flex gap-5">
+        <a href={tp('/privacy/')} class="text-champagne/20 hover:text-gold text-[11px] font-light transition-colors duration-200">{t('footer.privacy')}</a>
+        <a href={tp('/terms/')} class="text-champagne/20 hover:text-gold text-[11px] font-light transition-colors duration-200">{t('footer.terms')}</a>
       </div>
     </div>
   </div>
