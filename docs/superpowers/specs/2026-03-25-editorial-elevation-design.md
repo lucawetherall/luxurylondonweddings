@@ -46,7 +46,7 @@ Current: dark gradient boxes with venue name overlay — looks empty and unfinis
 
 New design — typographic composition on light background:
 - Thin gold border card on ivory background
-- Top row: venue type (e.g., "Church") left-aligned + founding date (e.g., "Est. 1123") right-aligned, both in gold uppercase 10px
+- Top row: venue type (e.g., "Church") left-aligned + founding date (e.g., "Est. 1123") right-aligned if `founded` field exists in frontmatter (omit if absent), both in gold uppercase 10px
 - Venue name in large Cormorant Garamond serif (26px)
 - Short prose excerpt from the venue's markdown body content (13px, slate color)
 - Bottom: thin gold rule separator, then location left-aligned and "View →" right-aligned in gold
@@ -135,11 +135,12 @@ New design:
 
 ## Files Affected
 
-### Components (~12 files)
-- `src/components/Nav.astro` — hover styles, font size, language switcher
+### Components (~13 files)
+- `src/components/Nav.astro` — hover styles, font size
+- `src/components/LanguageSwitcher.astro` — smaller, lighter weight, gold separator
 - `src/components/Hero.astro` — layout fix, scroll indicator redesign
 - `src/components/StatsBar.astro` — full redesign with gold numbers
-- `src/components/ServiceCard.astro` — emoji removal, Roman numerals, gold borders
+- `src/components/ServiceCard.astro` — emoji removal (remove `icon` prop entirely), Roman numerals, gold borders
 - `src/components/VenueCard.astro` — full redesign as typographic card
 - `src/components/WhyUs.astro` — alternating layout, gold dividers
 - `src/components/VenueMarquee.astro` — gold rules, spacing refinement
@@ -149,8 +150,11 @@ New design:
 - `src/components/ProcessSteps.astro` — spacing and divider refinement
 - `src/components/PlatformIcons.astro` — gold text links style
 
+### Layouts (~1 file)
+- `src/layouts/PageLayout.astro` — page header gold rule, padding refinement (affects all inner pages)
+
 ### Pages (~3 files)
-- `src/pages/index.astro` — section spacing variation, services heading alignment
+- `src/pages/index.astro` — section spacing variation, services heading alignment, remove icon props from ServiceCard calls
 - `src/pages/venues.astro` — updated grid for new card design
 - `src/pages/contact.astro` — editorial layout redesign
 
@@ -168,3 +172,4 @@ New design:
 - No changes to venue content markdown files
 - No new components — only redesigning existing ones
 - No changes to astro.config or build configuration
+- No changes to Testimonial.astro (not currently used on any page)
